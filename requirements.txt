@@ -16,3 +16,5 @@ Faker==2.0.4
 # Allure
 allure-pytest==2.8.18
 allure-python-commons==2.8.18
+
+pylint==2.4.4
