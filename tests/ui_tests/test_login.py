@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 
 
-def test_login(login_page, groups_page, group_page):
+def test_successful_login(login_page, main_page):
     login_page.open_login_page()
     login_page.login('admin', 'secret')
-    groups_page.open_groups_page()
-    groups_before = groups_page.get_groups_list()
-    groups_page.press_create_new_btn()
-    group_page.create_new_group(
-        name='name', header='header', footer='footer')
-    groups_page.open_groups_page()
-    groups_after = groups_page.get_groups_list()
-    assert len(groups_after) == len(groups_before) + 1
+    assert main_page.is_logout_btn_displayed(), (
+        'Авторизвания не была выполнена')
+
+
+def test_unsuccessful_login(login_page, main_page):
+    login_page.open_login_page()
+    login_page.login('admin', 'not_secret')
+    assert not main_page.is_logout_btn_displayed(), (
+        'Авторизвания была выполнена')
+

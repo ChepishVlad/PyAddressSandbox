@@ -34,7 +34,7 @@ pip-delete-this-directory.txt
 
 # Environments
 # This is used by Docker
-#.env
+.env
 .venv
 env/
 venv/

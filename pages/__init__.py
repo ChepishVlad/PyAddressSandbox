@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -17,3 +18,10 @@ class BasePage:
         return WebDriverWait(self.driver, time).until(
             EC.presence_of_all_elements_located(locator),
             message=f"Can't find elements by locator {locator}")
+
+    def is_element_present(self, locator):
+        try:
+            self.find_element(locator)
+            return True
+        except TimeoutException:
+            return False
