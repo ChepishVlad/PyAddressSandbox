@@ -20,5 +20,3 @@ class LoginPage(BasePage):
         pass_input.clear()
         pass_input.send_keys(password)
         self.find_element(self._submit_btn).click()
-
-
